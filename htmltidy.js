@@ -11,7 +11,6 @@ var TIDY_ERR = 2;
 
 // default tidy opts
 var DEFAULT_OPTS = {
-  newInlineTags: 'pipedrive-template',
   showWarnings: false,
   tidyMark: false,
   forceOutput: true,
