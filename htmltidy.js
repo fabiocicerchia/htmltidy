@@ -127,7 +127,9 @@ function tidy(text, opts, cb) {
     result+= data;
   });
   worker.on('error', function (data) {
-    error+= data;
+    if (result.length > 0 && data.code !== 'EPIPE') {
+      error+= data;
+    }
   });
   worker.on('end', function (code) {
     setImmediate(function(){cb(error, result);});
@@ -142,7 +144,7 @@ function chooseExec() {
       tidyExe = path.join('win32','tidy.exe');
       break;
     case 'linux':
-      tidyExe = path.join('linux', 'tidy');
+      tidyExe = path.join('linux', 'tidy5');
       break;
     case 'darwin':
       tidyExe = path.join('darwin', 'tidy');
