@@ -127,7 +127,9 @@ function tidy(text, opts, cb) {
     result+= data;
   });
   worker.on('error', function (data) {
-    error+= data;
+    if (result.length > 0 && data.code !== 'EPIPE') {
+      error+= data;
+    }
   });
   worker.on('end', function (code) {
     setImmediate(function(){cb(error, result);});
