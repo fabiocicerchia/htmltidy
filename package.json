@@ -20,7 +20,7 @@
     "darwin"
   ],
   "devDependencies": {
-    "request": "~2.11.4",
+    "request": "~2.88.2",
     "async": "~0.2.1"
   },
   "dependencies": {},
